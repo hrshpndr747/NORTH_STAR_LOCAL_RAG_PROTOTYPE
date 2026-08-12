@@ -1,0 +1,26 @@
+.venv/
+venv/
+ENV/
+
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+.env.bak
+
+# Vector index & local caches
+.rag_index/
+.rag_index*/
+data/confluence/
+
+# Python cache & build outputs
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+

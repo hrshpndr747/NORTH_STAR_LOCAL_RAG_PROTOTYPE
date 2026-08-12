@@ -1,0 +1,50 @@
+[
+  {
+    "start_seconds": 0.0,
+    "end_seconds": 37.945,
+    "title": "Security Awareness: Your First Five Minutes",
+    "text": "Welcome to Northstar's fictional security awareness briefing. The first five minutes after noticing something suspicious often determine whether a small mistake becomes a serious incident. Pause before acting, protect your credentials and company data, and report quickly. This demonstration uses only synthetic company information and is designed for testing video transcription, optical character recognition, timestamp citations, and retrieval augmented generation."
+  },
+  {
+    "start_seconds": 37.945,
+    "end_seconds": 72.503,
+    "title": "Recognize Phishing",
+    "text": "Phishing messages commonly create urgency, ask for unusual payments, or direct you to an unfamiliar sign-in page. Be cautious when a supplier suddenly changes bank details or an executive supposedly requests gift cards. Check the sender address carefully, but remember that a familiar display name is not proof. Do not click an unexpected link, open an untrusted attachment, or approve an unexpected multi-factor sign-in prompt."
+  },
+  {
+    "start_seconds": 72.503,
+    "end_seconds": 110.03,
+    "title": "Report Within 15 Minutes",
+    "text": "Northstar's fictional policy requires suspected phishing to be reported within fifteen minutes. Use the mail client's Report Phishing button or forward the original message as an attachment to security at northstar hyphen demo dot example. If you clicked, entered a password, or approved a sign-in, say so immediately. Disconnect the affected device from the network if Information Security instructs you, but do not delete evidence or attempt your own investigation."
+  },
+  {
+    "start_seconds": 110.03,
+    "end_seconds": 147.886,
+    "title": "Passwords and MFA",
+    "text": "Passwords must contain at least fourteen characters. Use a unique passphrase and never share it with a colleague, support agent, or manager. Multi-factor authentication is required for email, secure access, administrative systems, and customer data systems. An unexpected approval request may mean that someone already has your password. Reject the request, change the password through the approved process, and report the event to Information Security."
+  },
+  {
+    "start_seconds": 147.886,
+    "end_seconds": 189.546,
+    "title": "Classify Before Sharing",
+    "text": "Northstar uses four fictional classification levels: Public, Internal, Confidential, and Restricted. Public information is approved for external release. Internal information is for ordinary company use. Confidential information needs limited access and approved handling. Restricted information includes the most sensitive data and requires the strongest controls. Classification follows the information wherever it is copied, summarized, downloaded, photographed, or entered into another system."
+  },
+  {
+    "start_seconds": 189.546,
+    "end_seconds": 229.022,
+    "title": "AI Tools and Company Data",
+    "text": "Restricted information must never be entered into an artificial intelligence tool that Information Security has not approved. Confidential information may be processed only in an approved service with appropriate contracts, retention settings, and access controls. Removing a person's name may not be enough if the remaining information can still identify a customer, employee, or project. When uncertain, stop and ask Information Security before uploading or pasting the content."
+  },
+  {
+    "start_seconds": 229.022,
+    "end_seconds": 264.224,
+    "title": "Secure Remote Work",
+    "text": "When working remotely, use a company-managed device and the approved secure-access client. Avoid discussing confidential matters where conversations can be overheard. Do not leave a laptop visible in an unattended vehicle. Lock the screen whenever the device is unattended; the automatic screen lock activates after five minutes of inactivity. Report a lost or stolen device immediately to both the Service Desk and Information Security."
+  },
+  {
+    "start_seconds": 264.224,
+    "end_seconds": 300.001,
+    "title": "Remember: Stop, Protect, Report",
+    "text": "Remember the three-part response. Stop the risky action. Protect accounts, devices, data, and evidence. Report through the approved channel within the required time. For suspected phishing, the fictional target is fifteen minutes. For a lost device or serious production or security event, contact the Service Desk and emergency extension seven seven eight eight immediately. Accurate and early reporting is more valuable than trying to hide an honest mistake."
+  }
+]

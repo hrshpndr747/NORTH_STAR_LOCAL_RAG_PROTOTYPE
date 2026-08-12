@@ -1,0 +1,5 @@
+# Optional local OCR, scanned-PDF, audio, and video processing.
+Pillow>=10,<13
+pypdfium2>=4,<6
+faster-whisper>=1.1,<2
+
