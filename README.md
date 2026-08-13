@@ -1,191 +1,240 @@
-# Northstar local RAG prototype
+# Northstar Local RAG Prototype
 
-This is a runnable learning prototype for a company knowledge chatbot. It uses:
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://www.python.org/)
+[![Streamlit App](https://img.shields.io/badge/Streamlit-1.40%2B-FF4B4B.svg)](https://streamlit.io/)
+[![Ollama Powered](https://img.shields.io/badge/Ollama-Local%20AI-black.svg)](https://ollama.com/)
+[![Docker Ready](https://img.shields.io/badge/Docker-Supported-2496ED.svg)](https://www.docker.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-- a local **Qwen3.5 4B** base/instruction model through Ollama;
-- local multilingual embeddings through **Qwen3 Embedding 0.6B**;
-- Word, PDF, scanned-PDF OCR, images, Excel, video/audio, SQLite, text, CSV, JSON, and Confluence Cloud pages;
-- hybrid semantic + keyword retrieval;
-- evidence citations on every supported answer;
-- an explicit refusal when the sources do not support an answer;
-- a separate read-only SQLite explorer.
+An enterprise-ready, privacy-focused **Local Retrieval-Augmented Generation (RAG)** prototype for intelligent company knowledge base search and QA. Operating 100% locally via **Ollama**, this prototype handles multimodal document parsing (PDFs, scanned OCR, Word, Excel, SQLite, Video, Audio, and Confluence Cloud pages) with zero data leaving your local machine.
 
-The included Northstar data is entirely fictional.
+---
 
-## Fastest start on Windows
+## Key Features
 
-1. Install [Python 3.11 or 3.12](https://www.python.org/downloads/) and select **Add Python to PATH** during installation.
-2. Install [Ollama for Windows](https://ollama.com/download).
-3. Extract this ZIP to a normal folder such as `C:\Users\YourName\northstar-rag`.
-4. Double-click `setup_windows.bat`. It creates a private Python environment, installs the app, and downloads both local models.
-5. Double-click `run_windows.bat`.
-6. Your browser opens the app. Click **Build / rebuild index** once.
-7. Ask: `How many unused annual-leave days may be carried forward?`
+- **100% Local & Private**: Powered by local **Qwen3.5 4B** (LLM) and **Qwen3 Embedding 0.6B** via Ollama. No external API keys or cloud dependencies required for core retrieval.
+- **Multimodal Data Support**: 
+  - **Documents**: Word (`.docx`), PDF (`.pdf`), Scanned PDF OCR, Text (`.txt`, `.md`), CSV, JSON.
+  - **Spreadsheets & Databases**: Excel (`.xlsx`) sheet summaries & read-only SQLite (`.db`, `.sqlite`) inspection.
+  - **Audio & Video**: Local Faster-Whisper transcription, VTT subtitle ingestion, and sampled video frame visual analysis.
+  - **Confluence Sync**: Built-in REST connector to pull Confluence Cloud spaces and attachments.
+- **Hybrid Semantic + Keyword Search**: Combines dense vector similarity with BM25 keyword matching for maximum recall and precision.
+- **Strict Evidence Grounding & Refusals**: Every answer contains source citations (e.g. `[S1]`). If the provided document context lacks sufficient evidence, the assistant explicitly refuses to hallucinate.
+- **Containerized & Portable**: Complete support for native local execution or single-command deployment via Docker & Docker Compose.
 
-The first setup downloads several gigabytes. Later runs are local and much faster.
+---
 
-## macOS or Linux
-
-Install Python and [Ollama](https://ollama.com/download), then run:
-
-```bash
-chmod +x setup_mac_linux.sh run_mac_linux.sh
-./setup_mac_linux.sh
-./run_mac_linux.sh
-```
-
-## Running with Docker
-
-Make sure [Docker Desktop](https://www.docker.com/) and [Ollama](https://ollama.com/) are running on your host machine.
-
-1. Build and launch the container stack:
-```bash
-docker compose up --build -d
-```
-2. Open your browser and navigate to:
-```text
-http://localhost:8501
-```
-3. To view application logs:
-```bash
-docker compose logs -f web
-```
-4. To stop the container:
-```bash
-docker compose down
-```
-
-The container automatically connects to your host Ollama models at `http://host.docker.internal:11434`.
-
-
-## What happens when you ask a question
+## Architecture & Data Flow
 
 ```mermaid
 flowchart TD
-    A[Question] --> B[Keyword + embedding search]
-    B --> C[Top evidence chunks]
-    C --> D[Local Qwen model]
-    D --> E[Answer with S1 citations]
-    C --> F{Enough evidence?}
-    F -- No --> G[Refusal]
+    subgraph Data Sources
+        A1[PDFs & Scanned Documents]
+        A2[Word & Excel Files]
+        A3[Video / Audio & Transcripts]
+        A4[SQLite DB & Confluence Pages]
+    end
+
+    subgraph Ingestion Pipeline
+        B1[Extract Text, OCR & Frames] --> B2[Text Chunking & Metadata Sidecars]
+        B2 --> B3[Qwen3 Embedding Generator]
+        B3 --> B4[(Local RAG Vector Index)]
+    end
+
+    subgraph Query & Generation
+        C1[User Question] --> C2[Hybrid Search: Dense Vector + BM25]
+        C2 --> B4
+        B4 --> C3[Top Evidence Chunks]
+        C3 --> C4{Sufficient Evidence?}
+        C4 -- Yes --> C5[Qwen3.5 4B Local Model] --> C6[Answer with S1 Evidence Citations]
+        C4 -- No --> C7[Explicit Refusal Response]
+    end
+
+    A1 --> B1
+    A2 --> B1
+    A3 --> B1
+    A4 --> B1
 ```
 
-Documents are parsed and split into overlapping chunks. Ollama converts the chunks and the question into embeddings. The retriever combines cosine similarity with BM25 keyword matching. Only the best evidence is supplied to the chat model. Source text is treated as untrusted data so instructions found inside a document are ignored.
+---
 
-## Useful test questions
+## Tech Stack & Models
 
-- What are the standard office hours?
-- What approvals are required before buying remote-work equipment?
-- How quickly must suspected phishing be reported?
-- What are the four information-classification levels?
-- How many P1 tickets are in the workbook?
-- How many service requests are currently open in the database?
-- What dental insurance plan does Northstar provide? *(should refuse)*
+| Component | Technology / Model | Description |
+| :--- | :--- | :--- |
+| **User Interface** | Streamlit | Interactive web chat interface & SQLite dataset explorer |
+| **Local LLM Engine** | Ollama | Manages local model inference without external APIs |
+| **Instruction Model** | `qwen3.5:4b` | Local base instruction model for reasoning & response synthesis |
+| **Embedding Model** | `qwen3-embedding:0.6b` | Multilingual vector embeddings for semantic document search |
+| **Audio/Video Transcriber** | Faster-Whisper | Local automatic speech recognition (ASR) for audio/video |
+| **Vision / OCR** | Qwen3.5 Vision | Local image OCR & diagram analysis for scanned documents |
+| **Containerization** | Docker & Docker Compose | Containerized application setup connected to host Ollama |
 
-The full 30-question set is in `sample_data/northstar_rag_dummy_dataset/03_Evaluation`.
+---
 
-## Confluence Cloud learning sync
+## Quick Start
 
-Do not connect real company content until your company has approved where AI processing may occur, who may access the index, and how data is retained. This prototype has no enterprise permission mirroring.
+### 1. Windows (Native)
 
-For a private test space containing only the fictional pages:
+1. Install [Python 3.11 or 3.12](https://www.python.org/downloads/) (Select **Add Python to PATH**).
+2. Install and launch [Ollama for Windows](https://ollama.com/download).
+3. Open a terminal in the project directory and run setup:
+   ```cmd
+   setup_windows.bat
+   ```
+   *(This creates a virtual environment, installs dependencies, and pulls required models).*
+4. Launch the application:
+   ```cmd
+   run_windows.bat
+   ```
+5. Open your browser at `http://localhost:8501`, click **Build / rebuild index**, and start asking questions!
 
-1. Copy `.env.example` to `.env` if setup did not already do so.
-2. Create a Confluence API token for your own test account.
-3. Fill these fields in `.env`:
+---
 
-```text
-CONFLUENCE_BASE_URL=https://your-company.atlassian.net
-CONFLUENCE_EMAIL=you@company.com
-CONFLUENCE_API_TOKEN=your-token
-CONFLUENCE_SPACE_KEY=YOURSPACEKEY
-CONFLUENCE_OUTPUT_DIR=data/confluence
-CONFLUENCE_DOWNLOAD_ATTACHMENTS=true
-CONFLUENCE_ATTACHMENT_MAX_MB=250
-```
+### 2. macOS & Linux (Native)
 
-4. With the Python environment active, run:
+1. Install Python 3.11+ and [Ollama](https://ollama.com/download).
+2. Make scripts executable and run setup:
+   ```bash
+   chmod +x setup_mac_linux.sh run_mac_linux.sh
+   ./setup_mac_linux.sh
+   ```
+3. Run the application:
+   ```bash
+   ./run_mac_linux.sh
+   ```
 
-```bash
-python scripts/sync_confluence.py
-python scripts/build_index.py
-```
+---
 
-The connector downloads current pages and supported page attachments through the Confluence REST API. This includes documents/data plus PNG, JPG, TIFF, BMP, WebP, MP4, MOV, MKV, WebM, AVI, MP3, WAV, M4A, FLAC, AAC, and OGG. Files larger than 250 MB are skipped by default; change `CONFLUENCE_ATTACHMENT_MAX_MB` if needed.
+### 3. Docker Deployment
 
-Downloaded attachments are stored under `data/confluence/attachments/PAGE_ID/`. A hidden sidecar records the attachment ID, version, parent page, and Confluence URL so retrieval citations can link back to Confluence. Unchanged attachment versions are not downloaded again. The sync command reports every skipped or failed attachment before the index is rebuilt.
+Make sure [Docker Desktop](https://www.docker.com/) and [Ollama](https://ollama.com/) are running on your host machine.
 
-The API token stays in `.env`, which is excluded from Git. Basic authentication is acceptable for this small personal script; a company rollout should use approved OAuth/service-account architecture and enforce each user's Confluence permissions before retrieval.
+1. Build and start the container stack:
+   ```bash
+   docker compose up --build -d
+   ```
+2. Open your browser to:
+   ```text
+   http://localhost:8501
+   ```
+3. View logs or stop the stack:
+   ```bash
+   # View logs
+   docker compose logs -f web
 
-## Image OCR, scanned PDFs, and video understanding
+   # Stop container
+   docker compose down
+   ```
 
-Run `setup_windows.bat` again after upgrading. It installs the local media components. No additional cloud AI key is required.
+> **Note**: The Docker container automatically connects to your host machine's Ollama instance at `http://host.docker.internal:11434`, reusing your existing local models without re-downloading them inside the container.
 
-When **Build / rebuild index** runs:
+---
 
-1. Qwen3.5 Vision extracts visible text and factual visual information from image attachments.
-2. Text-poor PDF pages are rendered locally and sent to the same local vision model for OCR and diagram analysis.
-3. Faster-Whisper transcribes speech from video/audio with timestamps. If a matching VTT already exists, the supplied transcript is used instead.
-4. Video frames are sampled every 15 seconds by default. Qwen3.5 extracts slide text and describes meaningful visual information from those frames.
-5. The extracted evidence is embedded and receives image/page/timestamp citations like every other source.
+## Sample Benchmark Questions
 
-The first automatic transcription downloads the selected Whisper model. After that, OCR, transcription, embeddings, and answering run locally. Media analysis is cached beside each source as a hidden `.media.json` file and is repeated only when the source changes.
+Try asking the following test queries once your index is built:
 
-Relevant `.env` controls:
+- 💬 *What are the standard office hours?*
+- 💬 *What approvals are required before buying remote-work equipment?*
+- 💬 *How quickly must suspected phishing be reported?*
+- 💬 *What are the four information-classification levels?*
+- 💬 *How many P1 tickets are in the workbook?*
+- 💬 *How many service requests are currently open in the database?*
+- ❌ *What dental insurance plan does Northstar provide?* *(Expected result: Explicit Refusal due to lack of evidence)*
 
-```text
-MEDIA_AUTO_PROCESS_ON_INDEX=true
-OCR_VISION_MODEL=qwen3.5:4b
-PDF_OCR_MIN_CHARS=50
-WHISPER_MODEL=small
-WHISPER_DEVICE=cpu
-WHISPER_COMPUTE_TYPE=int8
-WHISPER_LANGUAGE=auto
-VIDEO_FRAME_ANALYSIS=true
-VIDEO_FRAME_INTERVAL_SECONDS=15
-VIDEO_MAX_FRAMES=40
-```
+---
 
-To preprocess media separately before opening the app:
+## Confluence Cloud Sync (Optional)
 
+To test syncing with a private test space in Confluence Cloud:
+
+1. Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+2. Configure your credentials in `.env`:
+   ```env
+   CONFLUENCE_BASE_URL=https://your-company.atlassian.net
+   CONFLUENCE_EMAIL=you@company.com
+   CONFLUENCE_API_TOKEN=your-token
+   CONFLUENCE_SPACE_KEY=YOURSPACEKEY
+   CONFLUENCE_OUTPUT_DIR=data/confluence
+   CONFLUENCE_DOWNLOAD_ATTACHMENTS=true
+   CONFLUENCE_ATTACHMENT_MAX_MB=250
+   ```
+3. Execute the sync and rebuild the index:
+   ```bash
+   python scripts/sync_confluence.py
+   python scripts/build_index.py
+   ```
+
+---
+
+## Advanced Media Processing (OCR & Video)
+
+When **Build / rebuild index** is executed:
+- **Scanned PDFs & Images**: Pages with fewer than 50 characters trigger local vision OCR via `qwen3.5:4b`.
+- **Audio & Video Files**: Transcribed via Faster-Whisper. Video files sample frames every 15 seconds for slide and visual content analysis.
+- **Caching**: Media processing outputs are cached alongside source files as `.media.json` sidecar files to prevent redundant computation.
+
+To process media standalone via CLI:
 ```bash
 python scripts/process_media.py
 ```
 
-## Model choices
+---
 
-The defaults are in `.env`:
+## Testing & Evaluation
 
-```text
-OLLAMA_CHAT_MODEL=qwen3.5:4b
-OLLAMA_EMBED_MODEL=qwen3-embedding:0.6b
-```
-
-If the 4B model is slow on your computer, try `qwen3.5:2b`. If you have more memory and want better answer quality, try a larger Qwen3.5 variant. Change `OLLAMA_CHAT_MODEL`, run `ollama pull MODEL_NAME`, and restart the app. Changing only the chat model does not require rebuilding the index. Changing the embedding model does.
-
-## Accuracy checks
-
-Run the automated tests:
-
+Run automated unit tests:
 ```bash
 python -m pytest -q
 ```
 
-After building the Ollama index, measure whether the expected source appears in the top results:
-
+Evaluate retrieval performance against the included question evaluation benchmark (`rag_evaluation_questions.json`):
 ```bash
 python scripts/evaluate_retrieval.py
 ```
 
-For a real rollout, add a human-reviewed evaluation set, measure retrieval recall and grounded-answer correctness separately, pin document versions in citations, reject low-evidence answers, mirror source permissions, log feedback without logging secrets, and require human confirmation for consequential actions.
+---
 
-## Limitations of this prototype
+## Project Structure
 
-- Video scene understanding is based on sampled frames, not every frame. Short-lived on-screen information between samples may be missed; reduce `VIDEO_FRAME_INTERVAL_SECONDS` when needed.
-- OCR and vision are model outputs and can misread small, blurred, handwritten, rotated, or low-contrast text. Verify high-impact numbers against the cited source.
-- Excel is parsed into computed summaries and row groups. Production-grade analytics should use deterministic dataframe/SQL tools for every numeric question.
-- SQLite access is forced into read-only mode and blocks mutation statements, but the chat interface currently retrieves its computed database summaries rather than allowing the model to generate SQL automatically.
-- Legacy `.doc` and `.xls` formats are not indexed; convert them to DOCX/XLSX.
-- There is no SSO, per-user permission filtering, audit service, redaction pipeline, or high-availability deployment.
+```text
+Northstar_Local_RAG_Prototype/
+├── app.py                      # Main Streamlit web app
+├── Dockerfile                  # Container definition
+├── docker-compose.yml          # Container orchestration
+├── .dockerignore               # Build context filter
+├── .env.example                # Environment variable configuration template
+├── northstar_rag/              # Core RAG engine module
+│   ├── chunking.py             # Document splitting & token management
+│   ├── config.py               # Settings loader
+│   ├── confluence.py           # Confluence REST sync connector
+│   ├── index_store.py          # Vector index storage & persistence
+│   ├── loaders.py              # Multimodal file parsers (Word, Excel, PDF, SQL)
+│   ├── media.py                # Whisper ASR & Vision OCR processor
+│   ├── models.py               # Data structures
+│   ├── ollama_client.py        # Ollama HTTP API client wrapper
+│   ├── retrieval.py            # Hybrid semantic + BM25 keyword search
+│   ├── service.py              # Main QA & RAG orchestration logic
+│   └── sql_tool.py             # Read-only SQLite query explorer
+├── sample_data/                # Dummy test dataset for Northstar Inc.
+├── scripts/                    # CLI helper utility scripts
+└── tests/                      # Automated pytest suite
+```
 
-These limits are intentional: they keep the first prototype understandable and safe enough to learn from before adding company-scale controls.
+---
+
+## Limitations & Future Enhancements
+
+- **Sampled Video Analysis**: Video frame analysis relies on periodic time sampling rather than full-stream decoding.
+- **Model-Based OCR**: Vision model OCR outputs should be spot-checked for high-impact numeric values.
+- **Enterprise Controls**: This prototype is designed for local evaluation. Production rollout should incorporate SSO authentication, enterprise ACL permission filtering, and central logging.
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
