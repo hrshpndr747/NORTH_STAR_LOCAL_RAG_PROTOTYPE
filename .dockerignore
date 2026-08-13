@@ -1,0 +1,30 @@
+# Python virtual environment & cache
+.venv/
+venv/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Git metadata
+.git/
+.gitignore
+
+# Environment & secrets
+.env
+.env.*
+.env.bak
+
+# Local vector indices & data caches
+.rag_index/
+data/confluence/
+
+# Docker files
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# OS metadata
+.DS_Store
+Thumbs.db

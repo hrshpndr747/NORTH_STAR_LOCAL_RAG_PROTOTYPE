@@ -34,6 +34,30 @@ chmod +x setup_mac_linux.sh run_mac_linux.sh
 ./run_mac_linux.sh
 ```
 
+## Running with Docker
+
+Make sure [Docker Desktop](https://www.docker.com/) and [Ollama](https://ollama.com/) are running on your host machine.
+
+1. Build and launch the container stack:
+```bash
+docker compose up --build -d
+```
+2. Open your browser and navigate to:
+```text
+http://localhost:8501
+```
+3. To view application logs:
+```bash
+docker compose logs -f web
+```
+4. To stop the container:
+```bash
+docker compose down
+```
+
+The container automatically connects to your host Ollama models at `http://host.docker.internal:11434`.
+
+
 ## What happens when you ask a question
 
 ```mermaid
