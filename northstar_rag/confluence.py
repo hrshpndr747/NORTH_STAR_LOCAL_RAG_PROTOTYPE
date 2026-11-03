@@ -72,12 +72,25 @@ class ConfluenceCloudClient:
         self.session.headers.update({"Accept": "application/json"})
 
     def _get(self, url: str, params: dict | None = None) -> requests.Response:
-        try:
-            response = self.session.get(url, params=params, timeout=self.timeout)
-            response.raise_for_status()
-            return response
-        except requests.RequestException as exc:
-            raise ConfluenceError(f"Confluence request failed: {exc}") from exc
+        import time
+        max_retries = 6
+        backoff = 2.0
+        for attempt in range(max_retries):
+            try:
+                response = self.session.get(url, params=params, timeout=self.timeout)
+                if getattr(response, "status_code", 200) == 429:
+                    retry_after = int(response.headers.get("Retry-After", int(backoff)))
+                    time.sleep(max(1, retry_after))
+                    backoff *= 2
+                    continue
+                response.raise_for_status()
+                return response
+            except requests.RequestException as exc:
+                if attempt == max_retries - 1:
+                    raise ConfluenceError(f"Confluence request failed: {exc}") from exc
+                time.sleep(backoff)
+                backoff *= 2
+        raise ConfluenceError(f"Confluence request failed after {max_retries} retries: {url}")
 
     def _next_url(self, response: requests.Response, payload: dict) -> str:
         link_next = response.links.get("next", {}).get("url")
@@ -186,15 +199,22 @@ class ConfluenceCloudClient:
         temporary = target.with_name(f".{target.name}.part")
         bytes_written = 0
         try:
-            response = self.session.get(
-                endpoint,
-                params=params,
-                headers={"Accept": "*/*"},
-                timeout=self.timeout,
-                stream=True,
-                allow_redirects=True,
-            )
-            response.raise_for_status()
+            import time
+            for attempt in range(6):
+                response = self.session.get(
+                    endpoint,
+                    params=params,
+                    headers={"Accept": "*/*"},
+                    timeout=self.timeout,
+                    stream=True,
+                    allow_redirects=True,
+                )
+                if getattr(response, "status_code", 200) == 429:
+                    wait_time = int(response.headers.get("Retry-After", 2 ** attempt))
+                    time.sleep(max(1, wait_time))
+                    continue
+                response.raise_for_status()
+                break
             with temporary.open("wb") as handle:
                 for block in response.iter_content(chunk_size=1024 * 1024):
                     if not block:

@@ -1,0 +1,33 @@
+{
+  "space_key": "~7120200ccfa40de3de4edeaae402358f4805ed",
+  "pages": [
+    "163934_Overview.json",
+    "163936_Getting_started_in_Confluence.json",
+    "163968_Explore_Confluence_Features.json",
+    "425986_Strata_Insurance_Corpus.json",
+    "983041_Customer_FAQ_Claims_Policies.json",
+    "1015809_Underwriting_Guidelines.json",
+    "1048577_Claims_Handling_Manual.json",
+    "1081345_Commercial_Policy_COM-0000003_Contract.json"
+  ],
+  "attachments": [
+    "attachments\\425986\\Employee_Phishing_Training.mp4",
+    "attachments\\425986\\The_Insurance_Claims_Process_Explained.mp4",
+    "attachments\\163968\\header.jpg",
+    "attachments\\425986\\underwriting-guidelines.md",
+    "attachments\\425986\\C-1000-adjuster-report.pdf",
+    "attachments\\425986\\commission-summary.csv",
+    "attachments\\425986\\C-1000-settlement-letter.pdf",
+    "attachments\\425986\\claims-handling-manual.docx",
+    "attachments\\425986\\customer-faq.md",
+    "attachments\\425986\\loss-run.xlsx",
+    "attachments\\425986\\premium-register.xlsx",
+    "attachments\\425986\\C-1000-fnol.pdf",
+    "attachments\\425986\\C-1000-fnol-scanned.jpg",
+    "attachments\\425986\\COM-0000003-contract.docx",
+    "attachments\\425986\\COM-0000003-declarations.pdf",
+    "attachments\\425986\\COM-0000003-schedule.pdf"
+  ],
+  "skipped_attachments": [],
+  "errors": []
+}

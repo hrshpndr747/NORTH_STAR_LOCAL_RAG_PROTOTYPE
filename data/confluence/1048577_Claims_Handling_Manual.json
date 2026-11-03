@@ -1,0 +1,8 @@
+{
+  "confluence_page_id": "1048577",
+  "space_key": "~7120200ccfa40de3de4edeaae402358f4805ed",
+  "title": "Claims Handling Manual",
+  "version": 2,
+  "url": "https://testproj01.atlassian.net/spaces/~7120200ccfa40de3de4edeaae402358f4805ed/pages/1048577/Claims+Handling+Manual",
+  "text": "SYNTHETIC — Meridian Mutual (fictional)\nClaims Handling Manual\nMeridian Mutual Insurance SE\nThis manual describes how Meridian Mutual Insurance SE handles a claim from first notice to resolution. It is a procedural reference for claims staff.\nClaim Lifecycle\nEvery claim moves through a standard sequence:\nFirst Notice of Loss (FNOL): the loss is reported and a claim is established.\nAssignment: an adjuster is assigned based on line and specialty.\nInvestigation: the adjuster inspects the loss and documents findings in an adjuster report.\nEstimate: a damage/repair estimate is prepared where the loss is covered.\nResolution: the claim is settled (payment issued) or denied (with a determination letter).\nReserving\nAn open claim carries a reserve representing the estimated remaining cost to resolve it. Reserves are reviewed as new information arrives and are released when the claim closes.\nSettlement and Deductibles\nWhen a claim is approved, payment is issued for the covered loss net of the policy deductible. The net amount payable equals the gross repair estimate less the deductible shown on the policy.\nDenials\nA claim may be denied when the loss is excluded, falls outside the coverage period, or is not adequately documented. A denial letter stating the basis is sent to the insured, who may request a review."
+}

@@ -1,0 +1,14 @@
+{
+  "media_analysis": true,
+  "source_size": 48744,
+  "source_mtime_ns": 1793612547853301500,
+  "vision_model": "qwen3.5:4b",
+  "whisper_model": null,
+  "items": [
+    {
+      "text": "Write with AI | Get the most out of your trial\n\nVisuals include a stylized UI element labeled \"Write with AI\" connected by an arrow to the main headline; on the right side are mockups representing user interface elements such as profile icons, checkmarks, and document-like panels.",
+      "locator": "image OCR and visual analysis",
+      "source_type": "image_vision"
+    }
+  ]
+}

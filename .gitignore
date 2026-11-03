@@ -11,7 +11,7 @@ ENV/
 # Vector index & local caches
 .rag_index/
 .rag_index*/
-data/confluence/
+*.zip
 
 # Python cache & build outputs
 __pycache__/

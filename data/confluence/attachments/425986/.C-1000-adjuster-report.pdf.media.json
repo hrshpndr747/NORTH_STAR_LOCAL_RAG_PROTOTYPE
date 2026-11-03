@@ -1,0 +1,8 @@
+{
+  "media_analysis": true,
+  "source_size": 25662,
+  "source_mtime_ns": 1793612549461160900,
+  "vision_model": "qwen3.5:4b",
+  "whisper_model": null,
+  "items": []
+}

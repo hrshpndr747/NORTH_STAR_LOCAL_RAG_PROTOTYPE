@@ -35,8 +35,8 @@ class MediaSettings:
     whisper_language: str | None = None
     pdf_ocr_min_chars: int = 50
     pdf_ocr_max_pages: int = 100
-    video_frame_interval_seconds: float = 15.0
-    video_max_frames: int = 40
+    video_frame_interval_seconds: float = 5.0
+    video_max_frames: int = 100
     enable_frame_analysis: bool = True
 
     @classmethod
@@ -50,8 +50,8 @@ class MediaSettings:
             whisper_language=None if language.lower() in {"", "auto"} else language,
             pdf_ocr_min_chars=max(0, int(os.getenv("PDF_OCR_MIN_CHARS", "50"))),
             pdf_ocr_max_pages=max(1, int(os.getenv("PDF_OCR_MAX_PAGES", "100"))),
-            video_frame_interval_seconds=max(1.0, float(os.getenv("VIDEO_FRAME_INTERVAL_SECONDS", "15"))),
-            video_max_frames=max(0, int(os.getenv("VIDEO_MAX_FRAMES", "40"))),
+            video_frame_interval_seconds=max(1.0, float(os.getenv("VIDEO_FRAME_INTERVAL_SECONDS", "5"))),
+            video_max_frames=max(0, int(os.getenv("VIDEO_MAX_FRAMES", "100"))),
             enable_frame_analysis=os.getenv("VIDEO_FRAME_ANALYSIS", "true").strip().lower() in {"1", "true", "yes", "on"},
         )
 

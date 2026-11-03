@@ -1,0 +1,89 @@
+{
+  "media_analysis": true,
+  "source_size": 10671558,
+  "source_mtime_ns": 1793615947090893400,
+  "vision_model": "qwen3.5:4b",
+  "whisper_model": "small",
+  "items": [
+    {
+      "text": "Oops! It looks like you just fell for a phishing attack. Don't worry, this wasn't a real phishing attack. It was a simulated attack run by your organization as part of a security awareness training exercise. So what even is phishing? It's a kind of online scam. You get contacted by a person or company, often through email about something important. You're asked to click on a link or download an attachment. You're then asked to hand over sensitive information such as your email address and password or ask to execute a file. The problem with phishing attacks is they're extremely effective. Did you know that 90% of security breaches are the result of a phishing email? You're probably wondering why. First of all, we as humans love to click and discover. The internet was made for discovering things. So we see a link and our first instinct is to click it. Second of all, our brain loves to infer information and predict things. We see typos and our brain seamlessly fills in the gap. Attackers abuse this by using look-alike email addresses and website domains. Third and finally, urgency. Fishing attacks are designed to put a time pressure on us to act fast. This can cause us to skip much",
+      "locator": "00:00:00–00:01:14; automatic speech transcript",
+      "source_type": "video_transcript"
+    },
+    {
+      "text": "of the critical thinking we normally apply when browsing the internet. The end result is that phishing attacks are highly successful. So you're probably thinking, what can I do to spot a fish in the future? Fortunately, there's a few common traits to look for. Phishing emails are often unexpected, asking you to bypass a standard procedure or trying to trigger an emotion. If you receive an email with any of these traits, stop. Look at it again and with an extra level of rigor. Do an external validation. Type the sender's email address or domain name into Google. Check to see if any of your colleagues recognize the sender. Look for abnormal typos, more grammatical errors, but if in doubt, report the email to your IT team for further analysis. With this knowledge, you're now equipped to spot the fish.",
+      "locator": "00:01:14–00:02:03; automatic speech transcript",
+      "source_type": "video_transcript"
+    },
+    {
+      "text": "1. Phishing?\n\n2. The image displays a stylized document icon with two blue symbols on it: an outline of a person (representing user identity) and a padlock (representing security or authentication). To the right is the word \"Phishing?\" in bold, black text against a light gray background. This visual setup suggests a topic related to phishing attacks targeting personal information and security credentials.",
+      "locator": "00:00:15; sampled video frame OCR and visual analysis",
+      "source_type": "video_frame_vision"
+    },
+    {
+      "text": "Downloading\n\nVisual description: A computer monitor displaying a stylized blue bug icon above a progress bar labeled \"Downloading.\" The background is light gray with faint window-like shapes on the right side. No additional readable numbers or units are visible; only the word “Downloading” appears clearly in white text within a horizontal blue bar beneath the insect graphic.",
+      "locator": "00:00:25; sampled video frame OCR and visual analysis",
+      "source_type": "video_frame_vision"
+    },
+    {
+      "text": "1. Transcribed Text: \"XXXXX\" (five 'x' characters in a password field)\n\n2. Visual Description: The image shows an illustrated scene with two main elements: on the left is a stylized web browser window displaying a locked padlock icon above five masked input fields ('xxxxx'), suggesting secure login or authentication; on the right stands a simplified human figure holding a smartphone, facing toward the browser interface.\n\n3. No additional readable text beyond \"XXXXX\" and no other useful informational content such as diagrams, charts, process steps, object labels, or table values are present in this image for RAG knowledge system use.",
+      "locator": "00:00:30; sampled video frame OCR and visual analysis",
+      "source_type": "video_frame_vision"
+    },
+    {
+      "text": "1. Transcribed Text: \"?\" (appears twice in speech bubbles)\n\n2. Visual Description: The image shows a stylized 3D animated character of a man wearing a blue sweater over a collared shirt and tie. He has his right hand raised to the back of his head, suggesting confusion or deep thought. Two white circular icons with question marks float near him—one above his shoulder and one lower down on the left side—symbolizing uncertainty or questions being considered. The background is minimalistic, featuring faint silhouettes of city buildings under a pale sky with small cloud shapes at top corners; there's also a simple fence-like line along the bottom edge indicating ground level.",
+      "locator": "00:00:40; sampled video frame OCR and visual analysis",
+      "source_type": "video_frame_vision"
+    },
+    {
+      "text": "Website\n\nMeaningful visual information includes a central website interface with multiple sections (e.g., \"Website\" label at top), surrounded by blurred representations of other web pages or interfaces. A mouse cursor is visible on the right side of the main window, suggesting user interaction. The layout resembles typical webpage design elements like headers, content blocks, and navigation areas but lacks specific textual details beyond “Website.”",
+      "locator": "00:00:45; sampled video frame OCR and visual analysis",
+      "source_type": "video_frame_vision"
+    },
+    {
+      "text": "http://www.\nhttp://www.\nhttp://www.\np://www.\nhttp://www.\nhttp://www.\nhttp://www.\nhttp://www.\nNO_USEFUL_CONTENT",
+      "locator": "00:00:50; sampled video frame OCR and visual analysis",
+      "source_type": "video_frame_vision"
+    },
+    {
+      "text": "1. Transcribed Text: None visible in the image.\n\n2. Visual Description: The image features a silhouette of a person with their hand on their chin, suggesting deep thought or contemplation. Inside the head area is an illustration of a blue brain. Surrounding this central figure are several question marks scattered across the background, symbolizing confusion, inquiry, or uncertainty related to thinking processes.\n\n3. Readable Text: There is no readable text present in the image that could be transcribed as part of evidence for a RAG (Retrieval-Augmented Generation) knowledge system.",
+      "locator": "00:00:55; sampled video frame OCR and visual analysis",
+      "source_type": "video_frame_vision"
+    },
+    {
+      "text": "1. Transcribed Text:\n- \"http://www.\" (in a search bar)\n- \"ge was deleted\" (partially visible message bubble)\n- \"s up man?\" (partially visible message bubble)\n\n2. Visual Information Description:\nThe image appears to be an illustration or diagram related to digital communication and web browsing. It includes elements such as:\n- A search bar with a partial URL (\"http://www.\").\n- Two speech bubbles containing text fragments that seem part of larger messages, possibly indicating deleted content or incomplete conversations.\n- Various icons like gears (settings), question marks, and abstract shapes scattered around the image.\n- A silhouette figure on the right side holding their head in thought, suggesting confusion or contemplation about something related to technology or communication issues depicted by the text fragments.\n\n3. No additional readable text was found beyond what has been transcribed above.",
+      "locator": "00:01:00; sampled video frame OCR and visual analysis",
+      "source_type": "video_frame_vision"
+    },
+    {
+      "text": "1. Transcribed Text:\n\"CONGRATS! CLAIM YOUR PRIZE\"\n\"http://www.\" (in a search bar)\n\n2. Visual Description:\nThe image depicts an illustration of a computer screen displaying what appears to be a phishing or scam page. A fishing hook is shown hanging from the top, with a letter attached that says \"CONGRATS! CLAIM YOUR PRIZE\". Surrounding this central element are several gold coins symbolizing money. Below the envelope and text is a search bar containing placeholder text starting with 'http://www.' followed by an empty space before it ends in '.' indicating incomplete URL input or just generic placeholders for web addresses. The background features light blue tones representing typical internet browsing environments while decorative elements like gears, plus signs, dots arranged geometrically suggest technological themes often associated online activities including cybersecurity concerns related to fraud prevention efforts aimed at protecting users from malicious websites designed deceive individuals into providing personal information under false pretenses claiming they've won something valuable without actually delivering anything real.",
+      "locator": "00:01:05; sampled video frame OCR and visual analysis",
+      "source_type": "video_frame_vision"
+    },
+    {
+      "text": "CONGRATS! CLAIM YOUR PRIZE http://www. CLICK NOW BEFORE EXPIRED IN 1 sec",
+      "locator": "00:01:10; sampled video frame OCR and visual analysis",
+      "source_type": "video_frame_vision"
+    },
+    {
+      "text": "Ask to bypass a procedure Trigger an emotion 1. Transcribe all readable text exactly, preserving important numbers, units, labels, and table values.\n2. Briefly describe meaningful visual information such as a diagram, chart, process, object, or action.\n3. Do not guess unreadable text or infer facts not visibly supported.\n\nThe image shows an office setting with a person sitting at a desk in front of a computer monitor. There are two speech bubbles above the screen: one says \"Ask to bypass a procedure\" and another says \"Trigger an emotion.\" A fishing hook is depicted as if it's trying to catch or interact with these text elements, suggesting themes related to social engineering tactics like asking for exceptions (bypassing procedures) or manipulating emotions. The overall scene appears designed to illustrate concepts relevant to cybersecurity awareness training about phishing attempts that use psychological manipulation techniques rather than technical exploits alone.\n\nNO_USEFUL_CONTENT",
+      "locator": "00:01:35; sampled video frame OCR and visual analysis",
+      "source_type": "video_frame_vision"
+    },
+    {
+      "text": "STOP\n\nVisual information includes a large blue prohibition symbol (circle with diagonal line) overlaying an office scene featuring silhouettes of people working at desks with computers and documents in the background. The word \"STOP\" is prominently displayed within the circle, suggesting a call to halt or cease activity related to the depicted work environment.",
+      "locator": "00:01:40; sampled video frame OCR and visual analysis",
+      "source_type": "video_frame_vision"
+    },
+    {
+      "text": "1. Transcribed Text:\n- URL in address bar: https://www.google.com\n- Search input field placeholder/text: anonym@mail.com\n\n2. Visual Description:\nThe image displays a stylized illustration of an all-in-one desktop computer (similar to Apple's iMac design) with its screen turned on and displaying the Google homepage within a web browser window. The background is plain white/light gray, emphasizing the device itself as the central object.",
+      "locator": "00:01:45; sampled video frame OCR and visual analysis",
+      "source_type": "video_frame_vision"
+    },
+    {
+      "text": "1. Transcribed Text: \"https://xxxxx.xx\"\n\n2. Visual Description: The image displays a computer monitor with a web browser interface shown on the screen. A URL is highlighted in blue within an input field or address bar at the center of the display, indicating active typing or selection by a mouse cursor positioned nearby. Surrounding elements include placeholder text blocks and graphical icons suggesting typical webpage layout components such as navigation menus or content sections.\n\n3. No additional readable text beyond \"https://xxxxx.xx\" is present; no charts, diagrams, tables, or other structured data are visible to support RAG functionality directly from this image alone.",
+      "locator": "00:01:55; sampled video frame OCR and visual analysis",
+      "source_type": "video_frame_vision"
+    }
+  ]
+}

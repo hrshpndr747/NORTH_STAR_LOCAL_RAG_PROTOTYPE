@@ -1,0 +1,14 @@
+{
+  "media_analysis": true,
+  "source_size": 86995,
+  "source_mtime_ns": 1793612554231318600,
+  "vision_model": "qwen3.5:4b",
+  "whisper_model": null,
+  "items": [
+    {
+      "text": "SYNTHETIC — MERIDIAN MUTUAL (FICTIONAL)  \nMeridian Mutual Insurance SE  \nFirst Notice of Loss (FNOL)  \n\nClaim Summary  \nClaim number C-1000  \nPolicy number COM-000077  \nLine of business Commercial  \nDate of loss 05/12/2023  \nDate reported 05/12/2023  \nCause of loss slip-and-fall  \nClaim status CLOSED  \nCurrent reserve €0.00  \n\nReporting Party  \nInsured Graciano Solé  \nPhone +34987 451 462  \nEmail carolina01@example.net  \nAssigned adjuster Albano Llopis Hierro (liability)  \n\nDescription of Loss  \nThe insured contacted us regarding slip-and-fall that occurred on 05/12/2023, associated with Commercial policy COM-000077. The insured reports damage at the business premises and possible interruption of operations. A claim has been established for review by the assigned adjuster.  \n\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\n\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document  \nPage 1 of 1",
+      "locator": "image OCR and visual analysis",
+      "source_type": "image_vision"
+    }
+  ]
+}
