@@ -32,7 +32,7 @@ class Settings:
             ollama_base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434").rstrip("/"),
             chat_model=os.getenv("OLLAMA_CHAT_MODEL", "qwen3.5:4b"),
             embed_model=os.getenv("OLLAMA_EMBED_MODEL", "qwen3-embedding:0.6b"),
-            data_dir=_path_from_env("DATA_DIR", "sample_data/northstar_rag_dummy_dataset"),
+            data_dir=_path_from_env("DATA_DIR", "data/confluence"),
             index_dir=_path_from_env("INDEX_DIR", ".rag_index"),
             top_k=max(1, int(os.getenv("TOP_K", "6"))),
             min_relevance=float(os.getenv("MIN_RELEVANCE", "0.18")),

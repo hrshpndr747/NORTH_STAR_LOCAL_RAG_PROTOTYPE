@@ -220,7 +220,7 @@ Northstar_Local_RAG_Prototype/
 │   ├── retrieval.py            # Hybrid semantic + BM25 keyword search
 │   ├── service.py              # Main QA & RAG orchestration logic
 │   └── sql_tool.py             # Read-only SQLite query explorer
-├── sample_data/                # Dummy test dataset for Northstar Inc.
+├── data/confluence/            # Synced Confluence knowledge base dataset
 ├── scripts/                    # CLI helper utility scripts
 └── tests/                      # Automated pytest suite
 ```

@@ -1,3 +1,4 @@
+import sqlite3
 from pathlib import Path
 
 import pytest
@@ -5,13 +6,16 @@ import pytest
 from northstar_rag.sql_tool import execute_read_only, validate_read_only_sql
 
 
-DATABASE = Path(__file__).resolve().parents[1] / "sample_data" / "northstar_rag_dummy_dataset" / "02_Attachments" / "support_operations.db"
-
-
-def test_read_only_database_query():
-    result = execute_read_only(DATABASE, "SELECT COUNT(*) AS total FROM open_service_requests")
+def test_read_only_database_query(tmp_path):
+    db_file = tmp_path / "test.db"
+    conn = sqlite3.connect(db_file)
+    conn.execute("CREATE TABLE open_service_requests (id INTEGER)")
+    conn.execute("INSERT INTO open_service_requests VALUES (60)")
+    conn.commit()
+    conn.close()
+    result = execute_read_only(db_file, "SELECT COUNT(*) AS total FROM open_service_requests")
     assert result.columns == ["total"]
-    assert result.rows == [[60]]
+    assert result.rows == [[1]]
 
 
 @pytest.mark.parametrize(

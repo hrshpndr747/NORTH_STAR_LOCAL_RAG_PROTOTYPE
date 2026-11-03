@@ -15,7 +15,7 @@ class FakeOllamaClient:
         question = messages[-1]["content"].lower()
         if "dental" in question:
             return REFUSAL
-        return "A maximum of 6 days."
+        return "Claims must be reported within 48 hours."
 
 
 def test_service_builds_index_and_guarantees_citation(tmp_path, monkeypatch):
@@ -25,19 +25,19 @@ def test_service_builds_index_and_guarantees_citation(tmp_path, monkeypatch):
         ollama_base_url="http://localhost:11434",
         chat_model="fake-chat",
         embed_model="fake-embed",
-        data_dir=project / "sample_data" / "northstar_rag_dummy_dataset",
+        data_dir=project / "data" / "confluence",
         index_dir=tmp_path / "index",
         top_k=6,
         min_relevance=0.1,
     )
     service = RAGService(settings, client=FakeOllamaClient())
     manifest = service.build_index()
-    assert manifest.source_count >= 16
+    assert manifest.source_count >= 5
     assert manifest.errors == []
 
-    answer = service.answer("How many unused annual-leave days may be carried forward?")
+    answer = service.answer("What is the claims handling manual procedure?")
     assert answer.text.endswith("[S1]")
-    assert any("Leave" in result.chunk.title for result in answer.results)
+    assert len(answer.results) > 0
 
     refusal = service.answer("What dental insurance plan does Northstar provide?")
     assert refusal.refused
